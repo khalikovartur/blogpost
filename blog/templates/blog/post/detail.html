@@ -13,6 +13,14 @@
             Share this post
         </a> 
     </p>
+    <h2>Similar posts</h2>
+    {% for post in similar_posts %}
+        <p>
+            <a href="{{ post.get_absolute_url }}">{{post.title}}</a>
+        </p>
+    {% empty %}
+        There are no similar posts yet.
+    {% endfor %}
     {% with comments.count as totalcomments %}
         <h2>
             {{ totalcomments }} comment{{ total_comments|pluralize }}
@@ -23,9 +31,10 @@
             <p class="info">
                 {{ forloop.counter }} by {{comment.name}} {{comment.created}}
             </p>
+            {{ comment.body|linebreaks }}
         </div>
         {% empty %}
-        <p>There are no comments yet</p>
+        <p>There are no comments yet.</p>
     {% endfor %}
     {% if new_comment %}
         <h2>Your comment has been added.</h2>
