@@ -3,6 +3,7 @@ from django.core.mail import send_mail
 from django.views.generic import ListView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Count
+
 from .models import Post, Comment
 from . forms import EmailPostForm, CommentForm
 
